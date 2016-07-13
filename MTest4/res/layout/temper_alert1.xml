@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_alert_1"
+    tools:context=".MainActivity" >
+
+    <!-- title -->
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_title_height"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="@dimen/view_padding"
+            android:paddingRight="@dimen/view_padding"
+            android:onClick="btn_back" >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_back">
+            </ImageView>
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_24ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="@string/title_alert" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_alignParentRight="true"
+            android:paddingRight="@dimen/view_padding"
+            android:background="@drawable/btn_text"
+            android:onClick="btn_confirm" >
+
+            <TextView
+                style="@style/text_15ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/confirm" />
+        </LinearLayout>
+    </RelativeLayout>
+    
+    <View android:layout_height="0.5dip"
+        android:layout_width="match_parent"
+        android:background="#ffffff"></View>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1" >
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="90dip"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:layout_width="90dip"
+                android:layout_height="68.5dip"
+                android:background="@drawable/img_thermometer3" />
+
+            <RelativeLayout
+                android:id="@+id/layout_thermometer2"
+                android:layout_width="90dip"
+                android:layout_height="175dip"
+                android:background="@drawable/img_thermometer2" >
+
+                <ImageView
+                    android:id="@+id/iv_value"
+                    android:layout_width="37.5dip"
+                    android:layout_height="0dip"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:background="@drawable/img_2" />
+                
+                
+	                <com.medical.view.VerticalSeekBar
+				    android:id="@+id/seekBar_progress"
+					android:layout_centerHorizontal="true" android:layout_width="37.5dip"
+					android:layout_height="match_parent"  
+					android:layout_centerVertical="true"
+					 android:progressDrawable="@null"
+					android:thumb="@null"
+					/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="90dip"
+                android:layout_height="115dip"
+                android:background="@drawable/img_thermometer1" >
+
+                <TextView
+                    android:id="@+id/textView_alert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="37.5"
+                    android:layout_marginBottom="35dip"
+                    android:textSize="20dip" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/imageView1"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:layout_alignBottom="@+id/linearLayout2"
+            android:layout_marginBottom="20dip"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@+id/linearLayout2"
+            android:background="@drawable/btn_add"
+            android:onClick="btn_add"
+            />
+
+        <Button
+            android:id="@+id/imageView2"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:layout_alignTop="@+id/imageView1"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/linearLayout2"
+            android:background="@drawable/btn_reduce"
+            android:onClick="btn_reduce" />
+
+    </RelativeLayout>
+
+</LinearLayout>

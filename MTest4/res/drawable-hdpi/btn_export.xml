@@ -1,0 +1,4 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@drawable/img_export_press"></item>
+    <item android:drawable="@drawable/img_export_normal"></item>
+</selector>

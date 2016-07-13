@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <!-- title -->
+
+    <RelativeLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/layout_title_height"
+        android:background="@drawable/bg_title"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/view_padding"
+            android:paddingRight="@dimen/view_padding"
+            android:onClick="btn_back" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_back" >
+            </ImageView>
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_24ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/register" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingRight="@dimen/view_padding"
+            android:layout_alignParentRight="true"
+            android:onClick="btn_confirm"
+            android:visibility="invisible" >
+
+            <Button
+                style="@style/text_15ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="@drawable/btn_text"
+                android:gravity="center"
+                android:text="@string/confirm" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <EditText
+            android:id="@+id/editText_sn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+              android:gravity="center_vertical"
+               android:imeOptions="actionNext"
+            android:hint="@string/sn"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/editText_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/phone"
+             android:imeOptions="actionNext"
+            android:enabled="false"
+            android:gravity="center_vertical"
+            android:inputType="phone"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/editText_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+             android:imeOptions="actionNext"
+              android:gravity="center_vertical"
+              android:maxLength="30"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/editText_passwordConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:maxLength="30"
+             android:imeOptions="actionNext"
+            android:gravity="center_vertical"
+            android:inputType="textPassword"
+            android:hint="@string/password_confirm"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/editText_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+             android:imeOptions="actionNext"
+            android:layout_marginTop="10dp"
+            android:hint="@string/username"
+            android:paddingLeft="10dp" />
+
+        <EditText
+            android:id="@+id/editText_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:layout_marginTop="10dp"
+             android:imeOptions="actionNext"
+            android:visibility="gone"
+            android:hint="@string/phone"
+            android:paddingLeft="10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/editText_verification"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:visibility="gone"
+                 android:imeOptions="actionNext"
+                android:gravity="center_vertical"
+                android:layout_weight="1"
+                android:hint="@string/verification"
+                android:paddingLeft="10dp" />
+
+            <Button
+                android:id="@+id/btn_verification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="btn_verification"
+                android:visibility="gone"
+                android:text="@string/verification_get" />
+
+            <TextView
+                android:id="@+id/textView_downcount"
+                android:layout_width="wrap_content"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:text="55S" >
+            </TextView>
+        </LinearLayout>
+
+        
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginTop="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:background="@drawable/btn_scan"
+            android:onClick="btn_register"
+            
+            android:text="@string/register_check"
+            android:textColor="#ffffff"
+            android:textSize="18sp" >
+        </Button>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zby.medical"
+    android:versionCode="59"
+    android:versionName="3.40" >
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <application
+        android:allowBackup="true"
+        android:name="com.medical.application.MyApplication"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.example.medical.GuideActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- 百度地图 -->
+       <!--  <meta-data 
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="nMlkvXwVyPU3a6qyrgXBe0Ks"/> -->
+        <meta-data 
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="hndlkGdYIa4eeqrxPz8nMzbE"/>
+        	<activity android:name="com.example.medical.LocationActivity" android:screenOrientation="portrait"></activity>
+         <activity android:name="com.example.medical.MainActivityBleActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.example.medical.DeviceListBleActivity" android:screenOrientation="portrait"></activity>
+        
+        
+        <activity android:name="com.example.medical.SettingActivity" android:screenOrientation="portrait" android:configChanges="locale|layoutDirection" ></activity>
+        <activity android:name="com.example.medical.SettingHelpActivity" android:screenOrientation="portrait" android:configChanges="locale|layoutDirection" ></activity>
+        <activity android:name="com.example.medical.SettingLanguageActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="com.example.medical.SettingGuideActivity" android:screenOrientation="portrait"></activity>
+        
+        
+        <activity android:name="com.example.medical.UserRegisterActivity2"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name="com.example.medical.UserForgetPasswordActivity2"
+            android:screenOrientation="portrait"
+            ></activity>
+        
+        <activity android:name="com.example.medical.UserLoginActivity"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTask"
+            ></activity>
+        <activity android:name="com.example.medical.MainActivity2" android:configChanges="locale"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name="com.example.medical.MessageActivity"
+             android:theme="@style/bg_null"
+            android:screenOrientation="portrait"
+            android:launchMode="singleTop"
+            ></activity>
+        <activity android:name="com.example.medical.UserForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        <activity android:name="com.example.medical.UserRegisterActivity"
+            android:screenOrientation="portrait"
+            ></activity>
+        
+        <activity android:name="com.example.medical.DeviceListActivity"
+            android:theme="@android:style/Theme.Dialog"
+            android:screenOrientation="portrait"></activity>
+        
+        <activity android:name="com.example.medical.TemperAlertActivityTest"
+            android:screenOrientation="portrait"></activity>
+          <activity android:name="com.example.medical.TemperAlertActivity1"
+            android:screenOrientation="portrait"></activity>
+        
+        <activity android:name="com.example.medical.HistoryChartActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name="com.example.medical.HistoryListActivity"
+            android:screenOrientation="portrait"></activity>
+        
+         <activity android:name="com.example.medical.DeviceListActivity2"
+            android:screenOrientation="portrait"></activity>
+         <activity android:name="com.example.medical.KnowledgeActivity"
+            android:screenOrientation="portrait"></activity>
+         <activity android:name="com.example.medical.HistoryRecord"
+            android:screenOrientation="portrait"></activity>
+         <activity android:name="com.example.medical.PictureActivity"
+            android:screenOrientation="portrait"></activity>
+         
+          <activity android:name="com.wt.corelib.activity.CropImageAcitivity" android:screenOrientation="portrait"></activity>
+         
+          <activity android:name="org.achartengine.chartdemo.demo.chart.XYChartBuilder" />
+        <activity android:name="org.achartengine.chartdemo.demo.chart.PieChartBuilder" />
+        <activity android:name="org.achartengine.GraphicalActivity" />
+        <activity android:name="com.example.medical.GeneratedChartDemo" />
+        
+        
+	        <activity
+	android:name="cn.smssdk.SMSSDKUIShell"
+	android:configChanges="keyboardHidden|orientation|screenSize"
+	android:theme="@android:style/Theme.Translucent.NoTitleBar"
+	android:windowSoftInputMode="stateHidden|adjustResize" />
+	        
+	        <service android:name="com.medical.agreement.BluetoothLeService" android:enabled="true"></service>
+	        
+	        
+	         <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" >
+        </service>
+        
+	         
+	          <!-- umeng推送 -->
+    <receiver
+            android:name="com.umeng.message.NotificationProxyBroadcastReceiver"
+			android:process=":push"
+            android:exported="false" >
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.SystemReceiver"
+            android:process=":push" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.MessageReceiver"
+            android:process=":push" >
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.RECEIVE" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.ElectionReceiver"
+            android:process=":push" >
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.ELECTION_RESULT_V4" />
+                <category android:name="umeng" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.umeng.message.RegistrationReceiver"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.example.medical.intent.action.COMMAND" />
+            </intent-filter>
+        </receiver>
+		<receiver android:name="com.umeng.message.BootBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="com.umeng.message.UmengService"
+			android:label="PushService"
+            android:exported="true"
+            android:process=":push" >
+            <intent-filter>
+                <action android:name="com.example.medical.intent.action.START" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="com.example.medical.intent.action.COCKROACH" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="org.agoo.android.intent.action.PING_V4" />
+				<category android:name="umeng" />
+            </intent-filter>
+        </service>
+
+        <service android:name="com.umeng.message.UmengIntentService" 
+			android:process=":push" />
+			
+		<service 
+			android:name="com.umeng.message.UmengMessageIntentReceiverService"
+			android:process=":push" 
+			android:exported="true" >
+			<intent-filter>
+				<action android:name="org.android.agoo.client.MessageReceiverService" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="org.android.agoo.client.ElectionReceiverService" />
+			</intent-filter>
+		</service>
+
+        <meta-data
+            android:name="UMENG_APPKEY"
+            android:value="5552fd8f67e58e9ee70022ea" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_MESSAGE_SECRET"
+            android:value="9c181152fc0c0bb119dd6d6b1f1cdb1c" >
+        </meta-data>
+        <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="Umeng" >
+        </meta-data>
+
+        <!-- If you donot want to use the standard notification bar in SDK, you can define IntentService instead to handle message. -->
+        <service android:name="com.umeng.message.example.MyPushIntentService" 
+			android:process=":push" />
+        <service android:name="com.umeng.message.UmengDownloadResourceService" >
+        </service>
+	    </application>
+    
+    <!-- 短信验证借口 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.RECEIVE_SMS" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    
+
+<!-- 百度地图权限 -->
+<uses-permission android:name="android.permission.GET_ACCOUNTS" />  
+<uses-permission android:name="android.permission.USE_CREDENTIALS" />  
+<uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />  
+<uses-permission android:name="android.permission.AUTHENTICATE_ACCOUNTS" />  
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />  
+<uses-permission android:name="android.permission.INTERNET" />  
+<uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />  
+<uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />  
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />  
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />  
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />  
+<uses-permission android:name="android.permission.BROADCAST_STICKY" />  
+<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+<!-- umeng推送权限 -->
+<!-- 必选 -->
+<!-- 必选 -->
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <!-- 可选 -->
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_ADDED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_CHANGED" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_INSTALL" />
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.VIBRATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    
+    
+    
+    
+	
+</manifest>

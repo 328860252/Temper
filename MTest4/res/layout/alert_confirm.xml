@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dip" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/bg_dialog_alert"
+        android:orientation="vertical"
+        android:padding="15dip" >
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:layout_margin="10dip"
+            android:text="Cooking will be cancelled? "
+            android:textColor="@color/circle_color3"
+            android:textSize="18sp" >
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="60dip" >
+
+            <Button
+                android:id="@+id/confirm_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dip"
+                android:layout_marginRight="5dip"
+                android:layout_marginTop="5dip"
+                android:layout_weight="1"
+                android:background="@drawable/img_btn_2"
+                android:text="@string/confirm"
+                android:textColor="#FFFFFF"
+                android:textSize="20dip" >
+            </Button>
+
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="match_parent"
+                android:layout_height="45dip"
+                android:layout_marginLeft="5dip"
+                  android:layout_marginTop="5dip"
+                android:layout_weight="1"
+                android:background="@drawable/img_btn_2"
+                android:text="@string/cancel"
+                android:textColor="#FFFFFF"
+                android:textSize="20dip" >
+            </Button>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

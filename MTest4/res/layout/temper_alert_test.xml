@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/bg_alert_1"
+    tools:context=".MainActivity" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="btn_back" >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/btn_back">
+            </ImageView>
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_24ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/title_alert" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:visibility="invisible"
+            android:background="@drawable/btn_text"
+            android:onClick="btn_confirm" >
+
+            <TextView
+                style="@style/text_15ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="@string/confirm" />
+        </LinearLayout>
+    </LinearLayout>
+    
+    <View android:layout_height="0.5dip"
+        android:layout_width="match_parent"
+        android:background="#ffffff"></View>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="1" >
+        
+           <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+             >
+        
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            
+            <SeekBar android:layout_height="wrap_content"
+               android:layout_width="200dp" 
+               android:id="@+id/seekBar_test"
+               android:max="10"/>
+            
+            <TextView
+                android:id="@+id/textView_progress"
+                android:layout_height="wrap_content"
+                android:layout_width="30dp"
+                android:gravity="center"
+                android:textSize="18sp"
+                android:text="0"
+                android:paddingLeft="5dp"
+                android:textColor="#6A6A6A"></TextView>
+
+            <!-- 
+            <ImageView
+                android:layout_width="90dip"
+                android:layout_height="68.5dip"
+                android:background="@drawable/img_thermometer3" />
+
+            <RelativeLayout
+                android:id="@+id/layout_thermometer2"
+                android:layout_width="90dip"
+                android:layout_height="175dip"
+                android:background="@drawable/img_thermometer2" >
+
+                <ImageView
+                    android:id="@+id/iv_value"
+                    android:layout_width="37.5dip"
+                    android:layout_height="0dip"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/img_2" />
+
+                <com.medical.view.VerticalSeekBar
+                    android:id="@+id/seekBar_progress"
+                    android:layout_width="37.5dip"
+                    android:layout_height="match_parent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:progressDrawable="@null"
+                    android:thumb="@null" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="90dip"
+                android:layout_height="115dip"
+                android:background="@drawable/img_thermometer1" >
+
+                <TextView
+                    android:id="@+id/textView_alert"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="35dip"
+                    android:text="37.5"
+                    android:textSize="20dip" />
+            </RelativeLayout>
+               -->
+        </LinearLayout>
+        
+       <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal" >
+
+
+        <Button
+            android:id="@+id/imageView2"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:layout_alignTop="@+id/imageView1"
+            android:layout_marginRight="40dp"
+            android:layout_toLeftOf="@+id/linearLayout2"
+            android:background="@drawable/btn_reduce"
+            android:onClick="btn_reduce" />
+        
+        <Button
+            android:id="@+id/imageView1"
+            android:layout_width="70dip"
+            android:layout_height="70dip"
+            android:layout_marginLeft="40dp"
+            android:background="@drawable/btn_add"
+            android:onClick="btn_add" />
+		</LinearLayout>
+        </LinearLayout>
+       
+           <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" >
+        
+               
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="70dip"
+            android:layout_alignBaseline="@+id/button1"
+            android:layout_alignBottom="@+id/button1"
+            android:layout_alignLeft="@+id/imageView2"
+               android:text="负偏发送"
+            android:onClick="btn_reducetest" />
+        
+       <View 
+           android:layout_height="1dp"
+           android:layout_width="50dp"></View>
+        
+           <Button
+            android:id="@+id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="70dip"
+            android:layout_alignLeft="@+id/imageView1"
+            android:layout_centerVertical="true"
+            android:text="正偏发送"
+            android:onClick="btn_addtest" />
+        
+        
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

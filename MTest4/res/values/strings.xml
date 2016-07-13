@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">智能体温管家</string>
+    <string name="history">历史记录</string>
+	<string name="monitor_open">监测开启</string>
+	<string name="monitor_close">监测关闭</string>
+	<string name="monitor_web">云端监测</string>
+	
+	<string name="none_found">没有发现设备</string>
+	<string name="noBluetooth">没有蓝牙设备</string>
+
+	 
+	 <string name="nolink">请先连接设备！</string>
+	 
+	 <string name="title_history">温度历史记录</string>
+	 <string name="cancel">取消</string>
+	 
+	 
+	 
+	 
+	   <string name="tell">咨询电话：<a>0755-2222222</a></string>
+	   <string name="info_alert">您的体温已经超过</string>
+	   <string name="notifi_title">体温警报</string>
+	 	<string name="dialog_title">title</string>
+	   
+	 <!-- alert -->
+	 <string name="confirm">确认</string>
+	 <string name="title_alert">报警数值设置</string>
+	 <string name="skip_noalert">不再提醒</string>
+	 <string name="skip_info">°警报</string>
+	 
+	 <string name="alert_temper">报警温度</string>
+	 <string name="knowledge">小知识</string>
+	 <string name="temper_low">温度过低，请检查佩戴情况</string>
+	 <string name='alert_next'>下次报警时间</string>
+	 
+	 <!-- list -->
+	 <string name="title_list">设备列表</string>
+	 <string name="match">配对记录</string>
+	 <string name="scan">搜索</string>
+	 <string name="message">健康必备品</string>
+	 <string name="noBluetooth1">没有打开蓝牙设备</string>	 
+	 <string name="export">导出</string>
+	 
+	   <string name="output_data_empty">没有mac记录!</string>
+    <string name="file_path">文件保存路径.</string>
+    <string name="sdcard_none">没有sdcard</string>
+    <string name="title_history_record">用户记录</string>
+    <string name="record">用户记录</string>
+    
+    
+    <string name="password_save">记住密码</string>
+    <string name="password_forget">忘记密码</string>
+    <string name="register">注册</string>
+    <string name="register_check">验证手机注册</string>
+    <string name="login">登陆</string>
+    <string name="account">用户名</string>
+    <string name="password">密码</string>
+    
+    <string name="sn">sn</string>
+    <string name="username">姓名</string>
+    <string name="password_confirm">确认密码</string>
+    <string name="phone">手机号码</string>
+    <string name="verification">验证码</string>
+    <string name="verification_get">获得验证码</string>
+    <string name="verification_reget">重新获取</string>
+    <string name="verification_empty">验证码不能为空</string>
+    <string name="verification_error">无效的验证码</string>
+    <string name="verification_success">验证成功，开始注册</string>
+    
+   <string name="account_empty">账号不能为空</string> 
+   <string name="password_empty">密码不能为空</string>
+   <string name="password_unlike">两次密码不一致</string>
+   <string name="password_short">密码不能短于5位</string>
+   <string name="password_reset">重置密码</string>
+   <string name="phone_error">请输入正确的手机号码</string>
+   <string name="sn_empty">SN不能为空</string>
+   <string name="name_empty">名字不能为空</string>
+   <string name="register_success">注册成功</string>
+   <string name="register_fail">注册失败</string>
+   <string name="login_success">登录成功</string>
+   <string name="login_fail">登录失败</string>
+   
+   <string name="please_wait">玩命加载中...</string>
+   <string name="offline">离线模式</string>
+   <string name="modify_success">修改成功</string>
+   <string name="modify_fail">修改失败</string>
+   
+   <string name="skip">跳过</string>
+   
+   <string name="setting">设置</string>
+   <string name="setting_language">语言选择</string>
+   <string name="setting_guide_help">用户指南</string>
+   <string name="version">版本信息</string>
+   <string name="save">保存</string>
+   
+<string name="input_first">请输入信息</string> 
+  <string name="take_phone">请先拍照</string> 
+  <string name="link_auto">自动连接中</string> 
+  <string name="linking">连接中...</string> 
+  <string name="link_success">连接成功</string> 
+  <string name="link_fail">连接失败</string> 
+  <string name="link_lost">断开连接</string> 
+  <string name="interval_alarm">报警间隔</string> 
+  <string name="interval_none">无间隔</string> 
+  <string name="interval_10">10分钟</string> 
+  <string name="interval_30">30分钟</string> 
+  <string name="interval_60">1小时</string> 
+  <string name="interval_120">2小时</string> 
+  <string name="is_off">确定关闭设备</string> 
+  <string name="is_exit">是否退出软件</string> 
+
+   <string name="language_zh">中文</string>
+   <string name="language_en">English</string>
+   <string name="language_ar">العربية</string>
+   <string name="close">关闭</string>
+   <string name="link">连接</string>
+    <string name="guide_help_info">
+        <![CDATA[
+	    <html>
+	    <head>
+	    </head>
+	    <body style="text-align:justify;color:gray;background-color:black;">
+	    <div class="mr r">
+	    	<div class="cont" align="left">
+
+ <p>【开关 】设备关闭按钮，点击该按钮，可以关闭设备，不能打开设备。</p>
+<p>【历史记录】点击该按钮，可以查看近期１个月的体温记录曲线和用户记录。</p>
+<p>【报警温度】点击该按钮，可以设置报警温度值；当体温达到报警温度时，设备蜂鸣器响起，app手机报警。</p>
+<p>【连接】蓝牙连接按钮，点击该按钮，app将自动搜索可以连接的设备，设备蓝牙名称为BATWBABY。</p>
+<p>【+】【-】温度调节按钮，调节范围为35~41℃</p>
+<p>【导出】点击该按钮，可以将温度曲线图的数据以xls的格式导出到名为BATWBABY的手机文件夹中。</p>
+<p>【用户记录】点击该按钮，进入界面后用户可以用拍照和文字来记录备忘录。</p>
+<p>注：a. 文字记录时请用户自行写下记录的时间，系统不会给出默认时间。</p>
+<p>b. 温度曲线图横坐标表示时间，纵坐标表示温度；红色的点表示报警点，绿色的点表示正常温度点；红线表示报警线；曲线图可以左右滑动。</p>
+<p>【设置】提供语言选择功能</p>
+<p>在您使用过程中如果出现问题，可以咨询服务热线：<font color="#ff0000">0551-65523560</font>。</p>
+</div>
+    	</div>
+	    </body>
+	    </html>
+	    ]]>
+   </string>
+   
+    <string name="skip_now">立即体验</string>
+    <string name="temper_height">高温警报</string>
+    
+    
+    <string name="alert">提示</string>
+    <string name="alert_nosdcard">没有SD卡！无法下载</string>
+    <string name="version_update">软件更新</string>
+    <string name="version_update_download">开始下载</string>
+    <string name="version_update_ing">正在下载中</string>
+    <string name="version_update_start">开始下载</string>
+    <string name="version_update_now">立即下载</string>
+    <string name="version_update_cancel">下次再说</string>
+    <string name="version_update_error">下载错误</string>
+    <string name="login_unuse">登入失效，请重新登入</string>
+    
+    <string name="ring">提示音</string>
+    <string name="min_10">10分钟</string>
+    <string name="min_30">30分钟</string>
+    <string name="hour_1">1小时</string>
+    <string name="hour_2">2小时</string>
+    <string name="photo">拍照</string>
+    
+    <string name="location">实时位置</string>
+    <string name="device">设备</string>
+</resources>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <!-- title -->
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/bg_title"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            >
+        </LinearLayout>
+
+        <TextView
+            style="@style/text_24ffffff"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/login" >
+        </TextView>
+
+        <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:onClick="btn_register" >
+
+            <TextView
+                style="@style/text_15ffffff"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:background="@drawable/btn_text"
+                android:text="@string/register" />
+        </LinearLayout>
+    </LinearLayout>
+    
+    
+    
+    
+     <LinearLayout 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_margin="15dp"
+        android:paddingTop="30dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        >
+        
+         <EditText 
+             android:id="@+id/editText_account"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:paddingLeft="10dp"
+              android:imeOptions="actionNext"
+             android:hint="@string/phone"
+             android:inputType="phone"
+             />
+         
+         <EditText 
+             android:layout_marginTop="10dp"
+             android:id="@+id/editText_password"
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+               android:paddingLeft="10dp"
+                android:imeOptions="actionNext"
+               android:maxLength="30"
+               android:inputType="textPassword"
+             android:hint="@string/password"
+             />
+         
+         <RelativeLayout 
+             android:layout_height="wrap_content"
+             android:layout_width="match_parent"
+             android:paddingTop="10dp"
+             android:paddingBottom="15dp"
+             android:gravity="center_vertical">
+             
+         <CheckBox
+                android:id="@+id/checkBox_passwordSave"
+                android:textColor="#3A3A3A"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="5dp"
+                android:paddingBottom="5dp"
+                android:textSize="16sp"
+                android:button="@null"
+                android:drawableLeft="@drawable/cb_password"
+                android:text="@string/password_save"
+               />
+         
+         <TextView
+             android:layout_height="wrap_content"
+             android:layout_width="wrap_content"
+             android:layout_alignParentRight="true"
+             android:layout_centerVertical="true"
+             android:textSize="16sp"
+             android:clickable="true"
+             android:focusable="true"
+             android:onClick="btn_passwordForget"
+             android:text="@string/password_forget"></TextView>
+         </RelativeLayout>
+         
+          <Button 
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/btn_scan"
+        android:text="@string/login"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:onClick="btn_login"
+        ></Button>
+    
+        
+      
+        
+    </LinearLayout>
+    
+    
+   
+
+</LinearLayout>

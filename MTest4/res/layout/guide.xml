@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ABABAB">
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_weight="1"
+        android:orientation="vertical" >
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/guidePages"     
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent" />
+        
+        <!-- 
+    <ImageView 
+        android:id="@+id/imageView_guideOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:layout_gravity="right|center_vertical"
+        android:src="@drawable/preview_arrowright_icon"/>
+         -->
+    
+
+            <LinearLayout
+                android:id="@+id/layout_viewGroup"
+                android:layout_width="fill_parent"
+                android:layout_height="20dp"
+                android:layout_marginBottom="20dp"
+                 android:layout_gravity="bottom"
+                 android:visibility="gone"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal" >
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView_message"
+                style="@style/text_16_666666"
+                android:textColor="@color/text_dark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_horizontal_margin"
+                 android:layout_gravity="top|right"
+                android:gravity="center"
+                android:textSize="16.5sp" />
+
+            <Button
+                android:id="@+id/btn_skip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="40dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:onClick="btn_skip"
+                 android:textColor="#F89909"
+                android:textSize="22sp"
+                
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:paddingRight="15dp"
+                android:paddingLeft="15dp"
+                android:background="@drawable/btn_button11"
+                android:text="@string/skip" />
+            
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#ffffff</color>
+    <color name="header_bg_common">#323a45</color>
+    <color name="title_txt_color">#f1f1f3</color>
+    <color name="ring_color">#14b9d6</color>
+    <color name="text_blue">#15DDFF</color>
+    <color name="text_dark">#A0A0A0</color>
+    
+    <color name="circle_color">#91DB1D</color>
+    <color name="circle_color2">#FFA539</color>
+    <color name="circle_color3">#F71414</color>
+    
+    <color name="bg_btn">#E085B1</color>
+    <color name="bg_btn_bluetooth">#E5E1DF</color>
+    
+    
+    <color name="bg_select">#DEDEDE</color>
+    
+    <color name="text_orange_FF1E59">#FF1E59</color>
+</resources>

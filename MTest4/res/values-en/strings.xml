@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="none_found">not found devices</string>
+	<string name="noBluetooth">no bluetooth device</string>
+    
+   <string name="app_name"> Temperature Housekeeper </string> 
+  <string name="history"> History </string> 
+  <string name="monitor_open">Monitor Open</string> 
+  <string name="monitor_close">Monitor Close</string> 
+  <string name="monitor_web">Web Monitor</string> 
+  <string name="nolink">Please connect device first</string> 
+  <string name="title_history">temperature history</string> 
+  <string name="cancel">Cancel</string> 
+	<string name="tell"> 咨询电话： 
+  <a>0755-2222222</a> 
+  </string>
+  <string name="info_alert">Your body temperature is more than </string> 
+  <string name="notifi_title"> Warning Temperature </string> 
+  <string name="dialog_title">title</string> 
+ <!-- 
+ alert 
+  --> 
+  <string name="confirm">Confirm</string> 
+  <string name="title_alert"> Set Value </string> 
+  <string name="skip_noalert">No longer remind</string> 
+  <string name="skip_info">°Alarm</string> 
+  <string name="alert_temper"> Alarm Temperature </string> 
+  <string name="knowledge">Knowledge</string> 
+  <string name="temper_low"> The temperature is too low, please check the wear condition </string> 
+  <string name="alert_next">The next alarm time</string> 
+ <!-- 
+ list 
+  --> 
+  <string name="title_list">Device List</string> 
+  <string name="match">Matching records</string> 
+  <string name="scan">Search</string> 
+  <string name="message">Health Product</string> 
+  <string name="noBluetooth1"> No open the bluetooth device </string> 
+  <string name="export">Export</string> 
+  <string name="output_data_empty">Output data empty</string> 
+  <string name="file_path">File path</string> 
+  <string name="sdcard_none"> sdcard none</string> 
+  <string name="title_history_record">User Records</string> 
+  <string name="record"> User Records </string> 
+  <string name="password_save">Remember password</string> 
+  <string name="password_forget">Forgot password?</string> 
+  <string name="register">Sign Up</string> 
+  <string name="register_check">Register with your phone number</string> 
+  <string name="login">Log In</string> 
+  <string name="account">Account</string> 
+  <string name="password">Password</string> 
+  <string name="sn">sn</string> 
+  <string name="username">Username</string> 
+  <string name="password_confirm">Confirm the password</string> 
+  <string name="phone">Mobile number</string> 
+  <string name="verification">Verification </string> 
+  <string name="verification_get">Get verification</string> 
+  <string name="verification_reget">Acquire again</string> 
+  <string name="verification_empty">Verification empty</string> 
+  <string name="verification_error">Invalid verification</string> 
+  <string name="verification_success">Verification success</string> 
+  <string name="account_empty">Account empty</string> 
+  <string name="password_empty">Password empty</string> 
+  <string name="password_unlike">Password differ</string> 
+  <string name="password_short">Password is shorter than 5 characters </string> 
+  <string name="password_reset">Password Reset</string> 
+  <string name="phone_error">Wrong mobilephone number</string> 
+  <string name="sn_empty">SN number empty </string> 
+  <string name="name_empty">Invalid name</string> 
+  <string name="register_success">Register successfully</string> 
+  <string name="register_fail">Register failed</string> 
+  <string name="login_success">log in successfully</string> 
+  <string name="login_fail">Log in failed</string> 
+  <string name="please_wait">Loading</string> 
+  <string name="offline">Offline</string> 
+  <string name="modify_success">Successful modify</string> 
+  <string name="modify_fail">Fail modify</string> 
+  <string name="skip">Skip</string> 
+  <string name="setting">Settings</string> 
+  <string name="setting_language">Language</string> 
+  <string name="setting_guide_help">Help</string> 
+  <string name="version">Version</string> 
+  <string name="save">Save</string> 
+  <string name="input_first">Input first</string> 
+
+  <string name="take_phone">Take photo first</string> 
+  <string name="link_auto">Auto connecting</string> 
+  <string name="linking">Connecting</string> 
+  <string name="link_success">Successful connect</string> 
+  <string name="link_fail">Fail connect</string> 
+  <string name="link_lost">Lose connect</string> 
+  <string name="interval_alarm">Alarm interval</string> 
+  <string name="interval_none">No interval</string> 
+  <string name="interval_10">10 minutes</string> 
+  <string name="interval_30">30 minutes</string> 
+  <string name="interval_60">1 hour</string> 
+  <string name="interval_120">2 hour</string> 
+  <string name="is_off">Are you sure to close the device?</string> 
+  <string name="is_exit">Exit the app</string> 
+  <string name="language_zh">Chinese</string> 
+  <string name="language_en">English</string> 
+  <string name="language_ar">العربية</string> 
+  
+  <string name="close">close</string>
+   <string name="link">Link</string>
+    <string name="guide_help_info"> <![CDATA[
+	    <html>
+	    <head>
+	    </head>
+	    <body style="text-align:justify;color:gray;background-color:black;">
+	    <div class="mr r">
+	    	<div class="cont" align="left">
+
+ <p>【开关 】设备关闭按钮，点击该按钮，可以关闭设备，不能打开设备。</p>
+<p>【历史记录】点击该按钮，可以查看近期１个月的体温记录曲线和用户记录。</p>
+<p>【报警温度】点击该按钮，可以设置报警温度值；当体温达到报警温度时，设备蜂鸣器响起，app手机报警。</p>
+<p>【连接】蓝牙连接按钮，点击该按钮，app将自动搜索可以连接的设备，设备蓝牙名称为BATWBABY。</p>
+<p>【+】【-】温度调节按钮，调节范围为35~41℃</p>
+<p>【导出】点击该按钮，可以将温度曲线图的数据以xls的格式导出到名为BATWBABY的手机文件夹中。</p>
+<p>【用户记录】点击该按钮，进入界面后用户可以用拍照和文字来记录备忘录。</p>
+<p>注：a. 文字记录时请用户自行写下记录的时间，系统不会给出默认时间。</p>
+<p>b. 温度曲线图横坐标表示时间，纵坐标表示温度；红色的点表示报警点，绿色的点表示正常温度点；红线表示报警线；曲线图可以左右滑动。</p>
+<p>【设置】提供语言选择功能</p>
+<p>在您使用过程中如果出现问题，可以咨询服务热线：<font color="#ff0000">0551-65523560</font>。</p>
+</div>
+    	</div>
+	    </body>
+	    </html>
+	    ]]>
+       
+   </string>
+   
+    <string name="skip_now">Immediately experience</string>
+    <string name="temper_height">High temperature alarm</string>
+    
+     <string name="alert">Prompt</string>
+    <string name="alert_nosdcard">No SD card, can not download!</string>
+    <string name="version_update">Software Updates</string>
+    <string name="version_update_download">Start Download</string>
+    <string name="version_update_ing">loading。。。</string>
+    <string name="version_update_start">Start Download</string>
+    <string name="version_update_now">Download Now</string>
+    <string name="version_update_cancel">Another time</string>
+    <string name="version_update_error">Download Error</string>
+    <string name="login_unuse">Login failed, please sign in again</string>
+    
+    <string name="ring">Beep</string>
+     <string name="min_10">10min</string>
+    <string name="min_30">30min</string>
+    <string name="hour_1">1hour</string>
+    <string name="hour_2">2hour</string>
+     <string name="photo">Photograph</string>
+     
+     <string name="location">Location</string>
+     <string name="device">Device</string>
+</resources>
