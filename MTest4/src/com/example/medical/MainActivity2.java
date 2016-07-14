@@ -317,8 +317,9 @@ public class MainActivity2 extends Activity {
 					tv_connect.setTextColor(getResources().getColor(R.color.text_dark));
 					break;
 				case handler_linkLost:
-					if (mTasksView.getValue()>3200 && mTasksView.getValue()<3600) {
+					if ( mTasksView.getValue()<3600) {
 						//断开提醒
+						showNextAlertDialog(3);
 					}
 					DeviceStatusBin.getInstance().setDeviceSwitch(false);
 					ToastNew.makeTextMid(MainActivity2.this, R.string.link_lost, 3).show();
@@ -495,7 +496,7 @@ public class MainActivity2 extends Activity {
 				 switch(value) {
 				 case 1:
 					// showLowAlertDialog(getString(R.string.temper_low), false);
-					 showNextAlertDialog(true);
+					 showNextAlertDialog(1);
 					 break;
 				 case 2:
 					 //showLowAlertDialog(getString(R.string.temper_low), false);
@@ -504,7 +505,7 @@ public class MainActivity2 extends Activity {
 					// showNextAlertDialog();
 					 break;
 				 case 4:
-					 showNextAlertDialog(false);
+					 showNextAlertDialog(2);
 					 break;
 				 }
 				 alarmStatus=value;
@@ -520,7 +521,7 @@ public class MainActivity2 extends Activity {
 				 switch(value) {
 				 case 1:
 					// showLowAlertDialog(getString(R.string.temper_low), false);
-					 showNextAlertDialog(true);
+					 showNextAlertDialog(1);
 					 break;
 				 case 2:
 					 //showLowAlertDialog(getString(R.string.temper_low), false);
@@ -529,7 +530,7 @@ public class MainActivity2 extends Activity {
 					// showNextAlertDialog();
 					 break;
 				 case 4:
-					 showNextAlertDialog(false);
+					 showNextAlertDialog(2);
 					 break;
 				 }
 				 alarmStatus=value;
@@ -1094,7 +1095,8 @@ public class MainActivity2 extends Activity {
 	private RadioButton rb_10, rb_30, rb_60, rb_120;
 	private Button confirm_btn;
 	
-	private void showNextAlertDialog(final boolean isLowAlert) {
+	//1低温  2 高温  3离开提醒
+	private void showNextAlertDialog(final int isLowAlert) {
 		if(low_dialog!=null) {
 			low_dialog.dismiss();
 			low_dialog=null;
@@ -1187,25 +1189,35 @@ public class MainActivity2 extends Activity {
 					break;
 				}
 				Log.e("tag", "���͸���1���� "+isLowAlert);
-				if(isLowAlert ) {//����
+				switch (isLowAlert ) {//����
+				case 1:
 					mSetupData.saveInt("alertLow_between_time", time);
 					//AppConstants.alert_dialog_time = time;
 					mConnService.writeToAllSockets(new byte[]{ (byte) 0xaa, (byte) 0x5a, (byte) 0xa5, (byte) 0x00, (byte) (time/(256*60*1000)), (byte) (time/(60*1000)) });
-				} else {//���¾���
+					break;
+				case 2:
 					mSetupData.saveInt("alert_between_time", time);
 					AppConstants.alert_dialog_time = time;
 					mConnService.writeToAllSockets(new byte[]{ (byte) 0xaa, (byte) 0x5a, (byte) 0xa5, (byte) 0xff, (byte) (time/(256*60*1000)), (byte) (time/(60*1000)) });
+					break;
+				default:
+					break;
 				}
 			}
 		});
 		int alert_time;
 		String str;
-		if(isLowAlert) {
+		switch (isLowAlert) {
+		case 1:
 			str = getString(R.string.temper_low);
 			alert_time = mSetupData.readInt("alertLow_between_time", 600*1000);
-		} else {
+		case 2:
 			str = getString(R.string.temper_height);
 			alert_time = AppConstants.alert_dialog_time;
+		default :
+			str = getString(R.string.temper_leveainfo);
+			alert_time = AppConstants.alert_dialog_time;
+			break;
 		}
 		switch(alert_time) {
 //		case 3000:

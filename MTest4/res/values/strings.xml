@@ -167,4 +167,6 @@
     
     <string name="location">实时位置</string>
     <string name="device">设备</string>
+      <string name="temper_leveainfo">呵呵，baby还在嘛</string>
+    
 </resources>

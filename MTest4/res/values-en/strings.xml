@@ -154,4 +154,5 @@
      
      <string name="location">Location</string>
      <string name="device">Device</string>
+      <string name="temper_leveainfo">Hey，baby is ok?</string>
 </resources>
