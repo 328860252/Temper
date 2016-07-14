@@ -1,21 +1,17 @@
 /MTest4/bin
-/
-/MTest4/gen/
+/MTest4/gen
 /MTest4/build
 /MTest4/.setting
 /MTest4/.classpath
 /MTest4/.gradle
 
 /MTest4/.idea
-
 /MTest4/.build
 /MTest4/MTest4.iml
 /MTest4/local.properties
 
 /SMSSDK/bin
-/
-/SMSSDK/gen/
+/SMSSDK/gen
 /SMSSDK/build
 /SMSSDK/.setting
-
 /SMSSDK/.classpath

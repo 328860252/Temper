@@ -103,6 +103,8 @@ public class MainActivity2 extends Activity {
 	private int voltage = 0;
 	private int alarmStatus;
 	
+	private int nowTemper =0;//å½“å‰æ¸©åº¦ï¼Œæ‰©å¤§äº†100è¢«
+	
 	private HistorySQLService2 hsqlService;
 	private SetupData mSetupData;
 	private NotificationManager notificationManager;
@@ -114,12 +116,12 @@ public class MainActivity2 extends Activity {
 	private AlertConfirmBin alertCloseBin;
 	
 	/**
-	 * ÊÇ·ñÒÑ¾­ÍË³öÈí¼þ
+	 * ï¿½Ç·ï¿½ï¿½Ñ¾ï¿½ï¿½Ë³ï¿½ï¿½ï¿½ï¿½
 	 */
 	private boolean isDestroy;
 	
 	
-	long lastTime;//¼ÇÂ¼ÉÏ´Î ±£´æµ½ÀúÊ·¼ÇÂ¼ÖÐµÄÊý¾Ý
+	long lastTime;//ï¿½ï¿½Â¼ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½æµ½ï¿½ï¿½Ê·ï¿½ï¿½Â¼ï¿½Ðµï¿½ï¿½ï¿½ï¿½ï¿½
 	public static String mac="AABBCCDDEEFF";
 	
 	
@@ -143,7 +145,7 @@ public class MainActivity2 extends Activity {
 		 private final int handler_toast = 855;
 		 private final int handler_switch_on = 106;
 		 private final int handler_switch_off = 107;
-		 private final int handler_switch_web = 108;//ÔÆ¶ËÔÚÏß
+		 private final int handler_switch_web = 108;//ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½
 		 private final static int handler_login_unuse = 110;
 		 
 		 Thread linkThraed;
@@ -157,7 +159,7 @@ public class MainActivity2 extends Activity {
 		 private PushAgent mPushAgent;
 			
 		 /**
-		 * ÊÇ·ñÕýÔÚÁ¬½ÓÖÐ
+		 * ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		 */
 		private boolean isConnecting;
 		 
@@ -187,7 +189,7 @@ public class MainActivity2 extends Activity {
 			mConnService.startSession();
 		}
 		
-		//¼Ó´ó³ÌÐòÖØÒªÐÂ£¬·ÀÖ¹±»Ëæ±ã»ØÊÕ
+		//ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½Â£ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		acquireWakeLock(this);
 		
 		mNetworkManager = new NetworkManager(this);
@@ -244,7 +246,7 @@ public class MainActivity2 extends Activity {
 			clipboard.setText(deviceToken);
 		}
 	}
-	 //»ñÈ¡Ëø  
+	 //ï¿½ï¿½È¡ï¿½ï¿½  
     public void acquireWakeLock(Context context) {  
         if (wakeLock == null) {  
             PowerManager powerManager = (PowerManager)(context.getSystemService(Context.POWER_SERVICE));  
@@ -253,7 +255,7 @@ public class MainActivity2 extends Activity {
         }  
     }  
   
-    //ÊÍ·ÅËø  
+    //ï¿½Í·ï¿½ï¿½ï¿½  
     public void releaseWakeLock() {  
         if(wakeLock != null && wakeLock.isHeld()){  
             wakeLock.release();  
@@ -315,6 +317,9 @@ public class MainActivity2 extends Activity {
 					tv_connect.setTextColor(getResources().getColor(R.color.text_dark));
 					break;
 				case handler_linkLost:
+					if (mTasksView.getValue()>3200 && mTasksView.getValue()<3600) {
+						//æ–­å¼€æé†’
+					}
 					DeviceStatusBin.getInstance().setDeviceSwitch(false);
 					ToastNew.makeTextMid(MainActivity2.this, R.string.link_lost, 3).show();
 					mTasksView.setValue(0);
@@ -324,7 +329,7 @@ public class MainActivity2 extends Activity {
 //					int temperValue;
 //					if(buf.length== 3&& (buf[0]==(-86))) {
 //						 temperValue = (MyByte.byteToInt(buf[1]) * 256 + MyByte.byteToInt(buf[2]));
-//						 System.out.println("½ÓÊÕ³É¹¦" + temperValue+" " + (Myhex.buffer2String(buf)) +buf[0]);
+//						 System.out.println("ï¿½ï¿½ï¿½Õ³É¹ï¿½" + temperValue+" " + (Myhex.buffer2String(buf)) +buf[0]);
 //						if(temperValue >3500 && temperValue <4100) {
 //							DeviceStatusBin.getInstance().setTemper(temperValue);
 //							long nowTimeMillis = System.currentTimeMillis();
@@ -338,7 +343,7 @@ public class MainActivity2 extends Activity {
 //								d.setHours(d.getHours());
 //								hbin.setDate(HistoryActivity.sdf.format(d));
 //								lastTime = nowTimeMillis;
-//								System.out.println( " Ìí¼Ó³É¹¦ " +hsqlService.insert(hbin) + " " + hbin.getValue() + " " + hbin.getDate());
+//								System.out.println( " ï¿½ï¿½Ó³É¹ï¿½ " +hsqlService.insert(hbin) + " " + hbin.getValue() + " " + hbin.getDate());
 //							}
 //						} else {
 //							DeviceStatusBin.getInstance().setTemper(temperValue);
@@ -357,7 +362,7 @@ public class MainActivity2 extends Activity {
 					break;
 				case MESSAGE_WRITE:
 					byte[] buff= (byte[]) msg.obj;
-					System.out.println("Ð´³ö" + Myhex.buffer2String(buff));
+					System.out.println("Ð´ï¿½ï¿½" + Myhex.buffer2String(buff));
 					break;
 				case handler_voltage:
 					showVoltageImage(voltage);
@@ -404,12 +409,12 @@ public class MainActivity2 extends Activity {
 	 */
 	private void parseData(byte[] buf) {
 		int value;
-		int ele;//µçÁ¿
-		 System.out.println("½ÓÊÕ³É¹¦" + " " + (Myhex.buffer2String(buf,buf.length)));
+		int ele;//ï¿½ï¿½ï¿½ï¿½
+		 System.out.println("ï¿½ï¿½ï¿½Õ³É¹ï¿½" + " " + (Myhex.buffer2String(buf,buf.length)));
 		switch(buf[0]) {
-		case (byte) 0xAA://ÎÂ¶È
+		case (byte) 0xAA://ï¿½Â¶ï¿½
 			value = (MyByte.byteToInt(buf[1]) * 256 + MyByte.byteToInt(buf[2]));
-			//if(value>3200 && value <4500) {//Ö»ÓÐÓÐÐ§µÄÎÂ¶È £¬ ²Å¼ÇÂ¼
+			//if(value>3200 && value <4500) {//Ö»ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½Â¶ï¿½ ï¿½ï¿½ ï¿½Å¼ï¿½Â¼
 				DeviceStatusBin.getInstance().setTemper(value);
 				nowTimeMillis = System.currentTimeMillis();
 				if(nowTimeMillis - lastTime> AppConstants.jiangeTime) {
@@ -428,19 +433,19 @@ public class MainActivity2 extends Activity {
 							d.setHours(d.getHours());
 							hbin.setDate(HistoryChartActivity.sdf.format(d));
 							if(AppConstants.isLineMode) {
-								System.out.println( " Ìí¼ÓÔÚÏß");
-								//±¾Èí¼þÎÂ¶ÈÊý¾Ý£¬ ÊÇÀ©´óÁË100±¶Êý£¬ ·þÎñÆ÷ÉÏµÄÊÇÕý³£µÄ Ð¡Êý , ËùÒÔ½«ÎÂ¶È  ³ýÒÔ100.0d
+								System.out.println( " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+								//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ð¡ï¿½ï¿½ , ï¿½ï¿½ï¿½Ô½ï¿½ï¿½Â¶ï¿½  ï¿½ï¿½ï¿½ï¿½100.0d
 								startSyncThread(hbin, ""+voltage, ""+MyDecimalHelp.getRoundFolat2(alert_temper/100.0f), ""+alarmStatus);
-							} else {//ÀëÏßÄ£Ê½
+							} else {//ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 								hbin.setOnline(false);
 								//lastTime = nowTimeMillis;
-								System.out.println( " Ìí¼ÓÀëÏß³É¹¦ " + 	hsqlService.insertByMac(hbin)+" " + hbin.getValue() + " " + hbin.getDate());
+								System.out.println( " ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³É¹ï¿½ " + 	hsqlService.insertByMac(hbin)+" " + hbin.getValue() + " " + hbin.getDate());
 							}
 							
 						}}).start();
 					
 				} else{
-					System.out.println( " ¼ä¸ôÊ±¼äÎ´µ½" + (nowTimeMillis - lastTime));
+					System.out.println( " ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Î´ï¿½ï¿½" + (nowTimeMillis - lastTime));
 				}
 //			} else {
 //				DeviceStatusBin.getInstance().setTemper(value);
@@ -482,7 +487,7 @@ public class MainActivity2 extends Activity {
 			showVoltageImage(voltage);
 			break;
 		case (byte) 0xbb:
-			//Toast.makeText(MainActivity2.this, "Ð£Õý·¢ËÍ³É¹¦", Toast.LENGTH_SHORT).show();
+			//Toast.makeText(MainActivity2.this, "Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Í³É¹ï¿½", Toast.LENGTH_SHORT).show();
 			break;
 		case (byte) 0xdd:
 			if(buf[1] == ((byte) 0xee)) {
@@ -530,8 +535,8 @@ public class MainActivity2 extends Activity {
 				 alarmStatus=value;
 				 
 				 
-				 //µãÁÁ
-				 int valueEle = MyByte.byteToInt(buf[4]) * 256 + MyByte.byteToInt(buf[5]);;//µçÁ¿
+				 //ï¿½ï¿½ï¿½ï¿½
+				 int valueEle = MyByte.byteToInt(buf[4]) * 256 + MyByte.byteToInt(buf[5]);;//ï¿½ï¿½ï¿½ï¿½
 					switch(valueEle) {
 					case 404:
 						ele = 100;
@@ -572,8 +577,8 @@ public class MainActivity2 extends Activity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		//getMenuInflater().inflate(R.menu.main, menu);
-//		menu.add(0, 1, 1, "±¨¾¯ÎÂ¶È");
-//		menu.add(0, 2, 2, "±¨¾¯Ê±¼ä");
+//		menu.add(0, 1, 1, "ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½");
+//		menu.add(0, 2, 2, "ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½");
 //		menu.add(0, 3, 3, "Ð¡ÖªÊ¶");
 		return true;
 	}
@@ -582,7 +587,7 @@ public class MainActivity2 extends Activity {
 	
 	
 	/**
-	 * ±£ÎÂÊ±¼ä´°¿Ú
+	 * ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä´°ï¿½ï¿½
 	 */
 	private AlertDialog.Builder dialog_builder;
 	@Override
@@ -667,8 +672,8 @@ public class MainActivity2 extends Activity {
 				Button cancel_btn = (Button) v.findViewById(R.id.negativeButton);
 				 title_textView = (TextView) v.findViewById(R.id.title);
 				TextView message_textView = (TextView) v.findViewById(R.id.message);
-				//title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" );
-				//µã»÷·µ»Ø°´Å¥£¬ ÌáÊ¾´°¿Ú²»ÏûÊ§
+				//title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" );
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ê§
 				dialog.setOnKeyListener(new OnKeyListener() {
 					
 					@Override
@@ -781,7 +786,7 @@ public class MainActivity2 extends Activity {
 	}
 
 	/**
-	 * µ½ ÉèÖÃÎÂ¶È¾¯½ç ½çÃæ, ºóÐÞ¸ÄÎªµ¯³ö²Ëµ¥
+	 * ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â¶È¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½ï¿½ï¿½Þ¸ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½Ëµï¿½
 	 * @param v
 	 */
 	public void btn_temper(View v){
@@ -796,7 +801,7 @@ public class MainActivity2 extends Activity {
 	}
 	
 	/**
-	 * µ½ÀúÊ·¼ÇÂ¼½çÃæ
+	 * ï¿½ï¿½ï¿½ï¿½Ê·ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½
 	 * @param v
 	 */
 	public void btn_history(View v){
@@ -879,8 +884,8 @@ public class MainActivity2 extends Activity {
 //			Button cancel_btn = (Button) v.findViewById(R.id.negativeButton);
 //			 title_textView = (TextView) v.findViewById(R.id.title);
 //			TextView message_textView = (TextView) v.findViewById(R.id.message);
-//			//title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" );
-//			//µã»÷·µ»Ø°´Å¥£¬ ÌáÊ¾´°¿Ú²»ÏûÊ§
+//			//title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" );
+//			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ê§
 //			dialog.setOnKeyListener(new OnKeyListener() {
 //				
 //				@Override
@@ -924,7 +929,7 @@ public class MainActivity2 extends Activity {
 //			});
 //			
 //		}
-//		//String msg = getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" ;
+//		//String msg = getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" ;
 //		//title_textView.setText(msg);
 //		//showNotification(msg, true);
 //		if(dialog!=null && !dialog.isShowing()) {
@@ -972,8 +977,8 @@ public class MainActivity2 extends Activity {
 			} else {
 				mTasksView.setValue(temper);
 			}
-//			if(alert_temper > 3850) {  //ÐèÒªÌø¹ýµÄÊÇ 3850£¬
-//				if(temper>=3850 && temper<alert_temper) {// Î»ÓÚ3850 ºÍ ¾¯±¨ÖÐ¼ä
+//			if(alert_temper > 3850) {  //ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 3850ï¿½ï¿½
+//				if(temper>=3850 && temper<alert_temper) {// Î»ï¿½ï¿½3850 ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ð¼ï¿½
 //					if(System.currentTimeMillis() - lastAlertTime < AppConstants.alert_dialog_time) {
 //						return -1;
 //					}
@@ -987,7 +992,7 @@ public class MainActivity2 extends Activity {
 //					secondAlert = true;
 //					showNextAlertDialog();
 //				}
-//			}  else if(alert_temper== 3850) { //Á½¸öÖµÏàµÈ£¬Ö±½Ó¾¯±¨
+//			}  else if(alert_temper== 3850) { //ï¿½ï¿½ï¿½ï¿½Öµï¿½ï¿½È£ï¿½Ö±ï¿½Ó¾ï¿½ï¿½ï¿½
 //				if(temper>=3850) {
 //					if(System.currentTimeMillis() - lastAlertTime < AppConstants.alert_dialog_time ) {
 //						return -1;
@@ -995,8 +1000,8 @@ public class MainActivity2 extends Activity {
 //					lastAlertTime = System.currentTimeMillis();
 //					showNextAlertDialog();
 //				}
-//			} else if(alert_temper<3850) {//¾¯±¨ÖµÐ¡Óê3850£¬ ÐèÒªÌø¹ýµÄÊÇ¾¯±¨Öµ
-//				if(temper >=alert_temper && temper<3850) { //   ¾¯±¨<= <3850
+//			} else if(alert_temper<3850) {//ï¿½ï¿½ï¿½ï¿½ÖµÐ¡ï¿½ï¿½3850ï¿½ï¿½ ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½Öµ
+//				if(temper >=alert_temper && temper<3850) { //   ï¿½ï¿½ï¿½ï¿½<= <3850
 //					if(System.currentTimeMillis() - lastAlertTime < AppConstants.alert_dialog_time) {
 //						return -1;
 //					}
@@ -1009,7 +1014,7 @@ public class MainActivity2 extends Activity {
 //					lastAlertTime = System.currentTimeMillis();
 //					secondAlert = true;
 //					showNextAlertDialog();
-//				} else if(temper<AppConstants.temper_min_alert) {//µÍÎÂ¾¯±¨
+//				} else if(temper<AppConstants.temper_min_alert) {//ï¿½ï¿½ï¿½Â¾ï¿½ï¿½ï¿½
 //					showLowAlertDialog(getString(R.string.temper_low), false);
 //				}
 //			}
@@ -1052,7 +1057,7 @@ public class MainActivity2 extends Activity {
 	
 	private int oldLocale;
 	/**
-	 * ¼à²âÓïÑÔÊÇ·ñÓÐ±ä»¯
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ð±ä»¯
 	 */
 	private void checkLocale() {
 		int locoleItem = mSetupData.readInt(AppString.language, AppString.Language_zh);
@@ -1116,7 +1121,7 @@ public class MainActivity2 extends Activity {
 			rb_120 = (RadioButton) v.findViewById(R.id.radioButton_120);
 			Button cancel_btn = (Button) v.findViewById(R.id.btn_cancel);
 			 confirm_btn = (Button) v.findViewById(R.id.btn_confrim);
-			//µã»÷·µ»Ø°´Å¥£¬ ÌáÊ¾´°¿Ú²»ÏûÊ§
+			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ê§
 			low_dialog.setOnKeyListener(new OnKeyListener() {
 				
 				@Override
@@ -1181,12 +1186,12 @@ public class MainActivity2 extends Activity {
 					default: 
 					break;
 				}
-				Log.e("tag", "·¢ËÍ¸ßÎÂ1£¿£¿ "+isLowAlert);
-				if(isLowAlert ) {//µÍÎÂ
+				Log.e("tag", "ï¿½ï¿½ï¿½Í¸ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ "+isLowAlert);
+				if(isLowAlert ) {//ï¿½ï¿½ï¿½ï¿½
 					mSetupData.saveInt("alertLow_between_time", time);
 					//AppConstants.alert_dialog_time = time;
 					mConnService.writeToAllSockets(new byte[]{ (byte) 0xaa, (byte) 0x5a, (byte) 0xa5, (byte) 0x00, (byte) (time/(256*60*1000)), (byte) (time/(60*1000)) });
-				} else {//¸ßÎÂ¾¯±¨
+				} else {//ï¿½ï¿½ï¿½Â¾ï¿½ï¿½ï¿½
 					mSetupData.saveInt("alert_between_time", time);
 					AppConstants.alert_dialog_time = time;
 					mConnService.writeToAllSockets(new byte[]{ (byte) 0xaa, (byte) 0x5a, (byte) 0xa5, (byte) 0xff, (byte) (time/(256*60*1000)), (byte) (time/(60*1000)) });
@@ -1256,8 +1261,8 @@ public class MainActivity2 extends Activity {
 //			Button cancel_btn = (Button) v.findViewById(R.id.negativeButton);
 //			 title_textView = (TextView) v.findViewById(R.id.title);
 //			TextView message_textView = (TextView) v.findViewById(R.id.message);
-//			title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" );
-//			//µã»÷·µ»Ø°´Å¥£¬ ÌáÊ¾´°¿Ú²»ÏûÊ§
+//			title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" );
+//			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ê§
 //			low_dialog.setOnKeyListener(new OnKeyListener() {
 //				
 //				@Override
@@ -1303,7 +1308,7 @@ public class MainActivity2 extends Activity {
 //			});
 //			
 //		}
-//		String msg = getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" ;
+//		String msg = getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" ;
 //		title_textView.setText(msg);
 //		showNotification(msg, true);
 //		if(low_dialog!=null && !low_dialog.isShowing()) {
@@ -1314,7 +1319,7 @@ public class MainActivity2 extends Activity {
 //	}
 	
 	/**
-	 * µÍÎÂÌáÊ¾
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾
 	 * @param string
 	 * @param isShowCancel
 	 */
@@ -1378,8 +1383,8 @@ public class MainActivity2 extends Activity {
 //			Button cancel_btn = (Button) v.findViewById(R.id.negativeButton);
 //			 title_textView = (TextView) v.findViewById(R.id.title);
 //			TextView message_textView = (TextView) v.findViewById(R.id.message);
-//			title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" );
-//			//µã»÷·µ»Ø°´Å¥£¬ ÌáÊ¾´°¿Ú²»ÏûÊ§
+//			title_textView.setText(getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" );
+//			//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø°ï¿½Å¥ï¿½ï¿½ ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ê§
 //			dialog.setOnKeyListener(new OnKeyListener() {
 //				
 //				@Override
@@ -1423,7 +1428,7 @@ public class MainActivity2 extends Activity {
 //			});
 //			
 //		}
-//		String msg = getString(R.string.info_alert)+(alertValue/100.0) +"¡ãC" ;
+//		String msg = getString(R.string.info_alert)+(alertValue/100.0) +"ï¿½ï¿½C" ;
 //		title_textView.setText(msg);
 //		showNotification(msg, true);
 //		if(dialog!=null && !dialog.isShowing()) {
@@ -1437,11 +1442,11 @@ public class MainActivity2 extends Activity {
 //		if(System.currentTimeMillis() - lastAlertTime < AppConstants.alert_dialog_time) {
 //			return;
 //		}
-//		String msg = "ÌåÎÂ¹ýµÍ¼ì²éÅå´÷Çé¿ö" ;
+//		String msg = "ï¿½ï¿½ï¿½Â¹ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" ;
 //		showNotification(msg, true);
 //		lastAlertTime = System.currentTimeMillis();
 //		dialoga = new AlertDialog.Builder(this)
-//		.setTitle("ÌåÎÂ¹ýµÍ¼ì²éÅå´÷Çé¿ö")
+//		.setTitle("ï¿½ï¿½ï¿½Â¹ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")
 //		.setPositiveButton(getString(R.string.confirm), new android.content.DialogInterface.OnClickListener() {
 //
 //			@Override
@@ -1461,7 +1466,7 @@ public class MainActivity2 extends Activity {
 	
 	
 	/**
-	 * ·¢ËÍÍ¨Öª
+	 * ï¿½ï¿½ï¿½ï¿½Í¨Öª
 	 * @param content
 	 */
 	private void showNotification(String content, boolean isrecly) {
@@ -1475,7 +1480,7 @@ public class MainActivity2 extends Activity {
 	
 		Notification notification = new Notification(R.drawable.ic_launcher,
 				getString(R.string.notifi_title), System.currentTimeMillis());
-		notification.flags |= Notification.FLAG_ONGOING_EVENT; // ¼ÓÈëÍ¨ÖªÀ¸µÄ"Ongoing"ÖÐ
+		notification.flags |= Notification.FLAG_ONGOING_EVENT; // ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½ï¿½ï¿½"Ongoing"ï¿½ï¿½
 		//notification.flags |= Notification.FLAG_NO_CLEAR; //
 		//notification.flags |= Notification.DEFAULT_SOUND;
 		notification.defaults |= Notification.DEFAULT_VIBRATE;
@@ -1486,22 +1491,22 @@ public class MainActivity2 extends Activity {
 		if(isrecly) {
 			notification.flags |= Notification.FLAG_INSISTENT;
 		}
-		// µã»÷ÁËÍ¨ÖªÀ¸ÖÐµÄ"Çå³ýÍ¨Öª"ºó²»Çå³ý
+		// ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½ï¿½Ðµï¿½"ï¿½ï¿½ï¿½Í¨Öª"ï¿½ï¿½ï¿½ï¿½ï¿½
 		notification.flags |= Notification.FLAG_SHOW_LIGHTS;
 		//notification.defaults = Notification.DEFAULT_LIGHTS;
-		// ÉèÖÃÍ¨ÖªµÄÊÂ¼þÏûÏ¢
+		// ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ï¢
 		Intent notificationIntent = new Intent(MainActivity2.this,
 				MainActivity2.class);
-		// ÉèÖÃintent µÄÆô¶¯Ä£Ê½
+		// ï¿½ï¿½ï¿½ï¿½intent ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 //		notificationIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK
-//				| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);// ¹Ø¼üµÄÒ»²½£¬ÉèÖÃÆô¶¯Ä£Ê½
+//				| Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);// ï¿½Ø¼ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
 		PendingIntent contentItent = PendingIntent.getActivity(
 				MainActivity2.this, 0, notificationIntent, 0);
 		notification.setLatestEventInfo(MainActivity2.this,
-				"Message", // Í¨ÖªÀ¸±êÌâ
-				content, // Í¨ÖªÀ¸ÄÚÈÝ
-				contentItent); // µã»÷¸ÃÍ¨ÖªºóÒªÌø×ªµÄActivity
-		// °ÑNotification´«µÝ¸øNotificationManager£¬idÎª0
+				"Message", // Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				content, // Í¨Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+				contentItent); // ï¿½ï¿½ï¿½ï¿½ï¿½Í¨Öªï¿½ï¿½Òªï¿½ï¿½×ªï¿½ï¿½Activity
+		// ï¿½ï¿½Notificationï¿½ï¿½ï¿½Ý¸ï¿½NotificationManagerï¿½ï¿½idÎª0
 		notificationManager.notify(0, notification);
 	}
 	
@@ -1564,7 +1569,7 @@ public class MainActivity2 extends Activity {
 	}
 
 	/**
-		 * ½ÓÊÕÀ¶ÑÀ¹ã²¥
+		 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã²¥
 		 */
 		private final BroadcastReceiver mReceiver = new BroadcastReceiver() {
 		        @Override
@@ -1577,7 +1582,7 @@ public class MainActivity2 extends Activity {
 		                		Log.d("tag","Auto paring " + btDevice.getAddress());
 		                		try {
 		                			ClsUtils.setPin(btDevice.getClass(),
-		                					btDevice, ""); // ÊÖ»úºÍÀ¶ÑÀ²É¼¯Æ÷Åä¶Ô
+		                					btDevice, ""); // ï¿½Ö»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		                		} catch (Exception e) {
 		                			
 		                			Log.d("mylog", "setPiN failed!");
@@ -1599,9 +1604,9 @@ public class MainActivity2 extends Activity {
 		    };
 
 	private boolean isShowToast = false;
-	int count= 59;//%20£¬²éÑ¯Ò»´Î×´Ì¬£¬%30 ²éÑ¯Ò»´Î ¹ã¸æ 
+	int count= 59;//%20ï¿½ï¿½ï¿½ï¿½Ñ¯Ò»ï¿½ï¿½×´Ì¬ï¿½ï¿½%30 ï¿½ï¿½Ñ¯Ò»ï¿½ï¿½ ï¿½ï¿½ï¿½ 
 
-	Runnable linkRunnable = new Runnable() {//ÕâÀïÊÇ×Ô¶¯Á¬½ÓÏß³Ì£¬ ÏÖÔÚ½«×Ô¶¯Á¬½Ó £¬ ºÍ×Ô¶¯È¥·þÎñÆ÷²éÑ¯¹ã¸æ£¬ºÏ²¢£¬Ò»ÆðÓÃ£¬ 20´Î×Ô¶¯Á¬½Ó£¬¾Í²éÑ¯Ò»´Î·þÎñÆ÷¹ã¸æ
+	Runnable linkRunnable = new Runnable() {//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì£ï¿½ ï¿½ï¿½ï¿½Ú½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ô¶ï¿½È¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½æ£¬ï¿½Ï²ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ã£ï¿½ 20ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ó£ï¿½ï¿½Í²ï¿½Ñ¯Ò»ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		
 		@Override
 		public void run() {
@@ -1610,29 +1615,29 @@ public class MainActivity2 extends Activity {
 				count++;
 				if(count>10000) count =0;
 				String lastmac = mSetupData.read(SetupData.LastBluetooth);
-				Log.v("tag", count+"×Ô¶¯Á¬½Ó"+lastmac);
+				Log.v("tag", count+"ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½"+lastmac);
 				//handler.sendEmptyMessage(handler_toast);
 				try {
 					Thread.sleep(AppConstants.auto_link_time);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
-					Log.e("tag", "Ìø³ö×Ô¶¯Á¬½Ó");
+					Log.e("tag", "ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½");
 					e.printStackTrace();
 					break;
 				}
 				
 				
-				//×Ô¶¯²éÑ¯£¬ ×´Ì¬
+				//ï¿½Ô¶ï¿½ï¿½ï¿½Ñ¯ï¿½ï¿½ ×´Ì¬
 				if(count%60==0) {
-					Log.v("tag", "²éÑ¯×´Ì¬");
+					Log.v("tag", "ï¿½ï¿½Ñ¯×´Ì¬");
 					startQueryStatus();
 				}
 				if(count%65==0) {
 					//startADThread();
-					Log.v("tag", "²éÑ¯¹ã¸æ");
+					Log.v("tag", "ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½");
 					startPushWarn();
 				}
-				if(isShowToast) {//±íÊ¾£¬ÕýÔÚ´¦ÓÚ ÊÖ¶¯Á¬½ÓÖÐ£¬ ¾ÍÍË³ö×Ô¶¯Á¬½Ó
+				if(isShowToast) {//ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ ï¿½Ö¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ ï¿½ï¿½ï¿½Ë³ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½
 					continue;
 				}
 				if(mConnService!=null && mConnService.isLink()) {
@@ -1641,8 +1646,8 @@ public class MainActivity2 extends Activity {
 				try {
 					if (mConnService != null) mConnService.terminated();
 					if(lastmac.isEmpty()) {
-						Log.e("tag", "Ã»ÓÐ¼ÇÒäµÄÁ¬½ÓÉè±¸£¬ Ìø³ö×Ô¶¯Á¬½Ó");
-						continue;//ÒòÎªÒª²éÑ¯
+						Log.e("tag", "Ã»ï¿½Ð¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½");
+						continue;//ï¿½ï¿½ÎªÒªï¿½ï¿½Ñ¯
 					}
 					if (BluetoothAdapter.getDefaultAdapter().getRemoteDevice(lastmac) == null)
 					{
@@ -1660,10 +1665,10 @@ public class MainActivity2 extends Activity {
 	
 	
 	/**
-	 * ²éÑ¯·þÎñÆ÷¹ã¸æ
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 //	private void startADThread() {
-//		//Èç¹ûÊÇÀëÏßÄ£Ê½£¬¾Í²»²éÑ¯
+//		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Ñ¯
 //		if(!AppConstants.isLineMode) {
 //			return;
 //		}
@@ -1702,10 +1707,10 @@ public class MainActivity2 extends Activity {
 	
 	
 	/**
-	 * ²éÑ¯¾¯¸æÐÅÏ¢
+	 * ï¿½ï¿½Ñ¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
 	 */
 	private void startPushWarn() {
-		//Èç¹ûÊÇÀëÏßÄ£Ê½£¬¾Í²»²éÑ¯
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Ñ¯
 		if(!AppConstants.isLineMode) {
 			return;
 		}
@@ -1729,7 +1734,7 @@ public class MainActivity2 extends Activity {
 				try {
 					if(isDestroy) return;
 					obj = result.getJSONObject("data");
-					if(obj.getBoolean("isWarn")) {//±¨¾¯
+					if(obj.getBoolean("isWarn")) {//ï¿½ï¿½ï¿½ï¿½
 						String imgName= obj.getString("content");
 						//String imgName="img/ide_bg_h.png" ;
 						String pathEnvir = Environment.getExternalStorageDirectory()
@@ -1752,14 +1757,14 @@ public class MainActivity2 extends Activity {
 	
 	
 	/**
-	 * ²éÑ¯×´Ì¬
+	 * ï¿½ï¿½Ñ¯×´Ì¬
 	 */
 	private void startQueryStatus() {
-		//Èç¹ûÊÇÀëÏßÄ£Ê½£¬¾Í²»²éÑ¯
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½Í²ï¿½ï¿½ï¿½Ñ¯
 		if(!AppConstants.isLineMode) {
 			return;
 		} 
-		if(mConnService.isLink()) {//Èç¹ûÒÑ¾­ÊÇÁ¬½ÓÉÏÉè±¸¾Í²»²éÑ¯
+		if(mConnService.isLink()) {//ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½Í²ï¿½ï¿½ï¿½Ñ¯
 			return;
 		}
 		new Thread (queryStatus).start();
@@ -1770,13 +1775,13 @@ public class MainActivity2 extends Activity {
 		@Override
 		public void run() {
 			// TODO Auto-generated method stub
-			if(mConnService.isLink()) {//Èç¹ûÒÑ¾­ÊÇÁ¬½ÓÉÏÉè±¸¾Í²»²éÑ¯
+			if(mConnService.isLink()) {//ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸ï¿½Í²ï¿½ï¿½ï¿½Ñ¯
 				return;
 			}
 			if(isDestroy) return;
 			String phone = mSetupData.read(AppString.account);
 			JSONObject result = mNetworkManager.queryStatus(phone);
-			if(mNetworkManager.isNetworkSuccess(result)) { //»ñµÃ·þÎñÆ÷ÉÏµÄÎÂ¶È×´Ì¬
+			if(mNetworkManager.isNetworkSuccess(result)) { //ï¿½ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½Â¶ï¿½×´Ì¬
 				Log.v("statusThread", "result="+result.toString());
 				JSONObject obj;
 				try {
@@ -1785,7 +1790,7 @@ public class MainActivity2 extends Activity {
 					voltage = obj.getInt("voltage");
 					handler.sendEmptyMessage(handler_voltage);
 
-					//ÎÞÂÛ¿ª¹Ø£¬ ¶¼ÊÇÔÆ¶Ë¿ªÆô
+					//ï¿½ï¿½ï¿½Û¿ï¿½ï¿½Ø£ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶Ë¿ï¿½ï¿½ï¿½
 					//int isBlueConn = (int) (obj.getInt("bluetoothIsConnect"));
 					//if(isBlueConn==1) {
 						handler.sendEmptyMessage(handler_switch_web);
@@ -1814,16 +1819,16 @@ public class MainActivity2 extends Activity {
 	};
 	
 	/**
-	 * ¿ªÊ¼Í¬²½Êý¾Ýµ½·þÎñÆ÷
+	 * ï¿½ï¿½Ê¼Í¬ï¿½ï¿½ï¿½ï¿½ï¿½Ýµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	private void startSyncThread( HistoryBin historyBin,final String voltage,final String alarmTemperature,final String alarmState) {
 		if(isDestroy) return;
-		if(!mConnService.isLink()) {//Ã»ÓÐÁ¬½ÓÉÏÉè±¸
+		if(!mConnService.isLink()) {//Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½è±¸
 			return;
 		}
 //				// TODO Auto-generated method stub
 				String account = mSetupData.read(AppString.account);
-				//³ýÒÔ100£¬ ±ä³ÉÕý³£Ð¡Ê÷
+				//ï¿½ï¿½ï¿½ï¿½100ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½
 				JSONObject result = mNetworkManager.sync(account,
 						""+MyDecimalHelp.getRoundFolat2( Integer.parseInt(historyBin.getValue()) / 100.0d), voltage, alarmTemperature, "0", "0", alarmState);
 				if(mNetworkManager.isNetworkSuccess(result)) {
@@ -1842,20 +1847,20 @@ public class MainActivity2 extends Activity {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-				} else if(mNetworkManager.isNetworkNoLogin(result)) {  //µÇÈëÒÑ¾­Ê§Ð§
+				} else if(mNetworkManager.isNetworkNoLogin(result)) {  //ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¾ï¿½Ê§Ð§
 					String password = mSetupData.read(AppString.password, "");
-					if(password.equals("")) {//Ã»ÓÐÃÜÂë
+					if(password.equals("")) {//Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 						mSetupData.saveboolean(AppString.isLogin, false);
 						Intent intenta =  new Intent(MainActivity2.this, UserLoginActivity.class);
         				startActivity(intenta);
         				finish();
         				return;
 					}
-					//ºóÌ¨µÇÈë
+					//ï¿½ï¿½Ì¨ï¿½ï¿½ï¿½ï¿½
 					result = mNetworkManager.userLoginNoAlert(account, password);
-					//¼ÌÐøµÇÈë
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 					if(mNetworkManager.isNetworkSuccess(result)) { 
-						//¼ÌÐø°Ñ¸Õ²ÅµÄÊý¾Ý´«µÝÉÏÈ¥
+						//ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¸Õ²Åµï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½ï¿½ï¿½È¥
 						result =  mNetworkManager.sync(account,""+MyDecimalHelp.getRoundFolat2( Integer.parseInt(historyBin.getValue()) / 100.0d), voltage, alarmTemperature, "0", "0", alarmState);
 						if(mNetworkManager.isNetworkSuccess(result)) {
 							try {
@@ -1874,7 +1879,7 @@ public class MainActivity2 extends Activity {
 									e.printStackTrace();
 							}
 						}
-					} else {//ÖØÐÂµÇÈë
+					} else {//ï¿½ï¿½ï¿½Âµï¿½ï¿½ï¿½
 						mSetupData.saveboolean(AppString.isLogin, false);
 						handler.sendEmptyMessage(handler_login_unuse);
 						Intent intenta =  new Intent(MainActivity2.this, UserLoginActivity.class);
@@ -1882,8 +1887,8 @@ public class MainActivity2 extends Activity {
         				finish();
         				return;
 					}
-				} else {//ÉÏ´«Ê§°Ü£¬µ±×öÀëÏßµÄµã
-					//µ±×öÀëÏßµÄµã£¬²åÈë
+				} else {//ï¿½Ï´ï¿½Ê§ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµÄµï¿½
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ßµÄµã£¬ï¿½ï¿½ï¿½ï¿½
 					historyBin.setPhoneAccount(account);
 					historyBin.setOnline(false);
 					hsqlService.insertByAccount(historyBin);
@@ -1892,7 +1897,7 @@ public class MainActivity2 extends Activity {
 	
 	
 	/**
-	 * ¿ªÊ¼ÏÂÔØ·þÎñÆ÷Êý¾ÝÏß³Ì
+	 * ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Ø·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
 	 */
 	private void startDownloadThread() {
 		if(!AppConstants.isLineMode) {
@@ -1923,9 +1928,9 @@ public class MainActivity2 extends Activity {
 //							historyBin = new HistoryBin();
 //							try {
 //								historyBin.setDate(jobj.getString("dataTime"));
-//								//±¾Èí¼þÎÂ¶ÈÊý¾Ý£¬ ÊÇÀ©´óÁË100±¶Êý£¬ ·þÎñÆ÷ÉÏµÄÊÇÕý³£µÄ Ð¡Êý 
+//								//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ï¿½ï¿½Ý£ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ð¡ï¿½ï¿½ 
 //								final int temper = (int) (Float.valueOf(jobj.getString("temperature")) *100);
-////								if(temper<3200|| temper>4100){//ÏÞÖÆÎÂ¶È·¶Î§ÔÚ 35¡ã ºÍ41¡ãÖ®¼ä
+////								if(temper<3200|| temper>4100){//ï¿½ï¿½ï¿½ï¿½ï¿½Â¶È·ï¿½Î§ï¿½ï¿½ 35ï¿½ï¿½ ï¿½ï¿½41ï¿½ï¿½Ö®ï¿½ï¿½
 ////									continue;
 ////								}
 //								historyBin.setValue(""+temper);

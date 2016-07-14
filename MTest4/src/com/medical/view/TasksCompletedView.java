@@ -181,5 +181,7 @@ public class TasksCompletedView extends View {
 		this.alert_value = alertValue;
 	}
 	
-
+	public int getValue() {
+		return this.value;
+	}
 }
