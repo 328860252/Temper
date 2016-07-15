@@ -40,6 +40,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginLeft="5dp"
             android:textSize="20sp"
+            android:gravity="center"
             android:textColor="@color/text_dark"
             android:paddingLeft="2dp"
             android:visibility="visible" />

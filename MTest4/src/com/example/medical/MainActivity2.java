@@ -317,7 +317,7 @@ public class MainActivity2 extends Activity {
 					tv_connect.setTextColor(getResources().getColor(R.color.text_dark));
 					break;
 				case handler_linkLost:
-					if ( mTasksView.getValue()<3600) {
+					if (mTasksView.getValue()>3200 && mTasksView.getValue()<3600) {
 						//断开提醒
 						showNextAlertDialog(3);
 					}
